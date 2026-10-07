@@ -1,0 +1,516 @@
+:root {
+    --accent: #fbc02d;
+    --accent-glow: rgba(251, 192, 45, 0.45);
+    --bg-dark: #03080e;
+    --card-w: 480px;
+    --card-h: 340px;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Montserrat', "Noto Sans TC", sans-serif; 
+}
+
+body { 
+    background: var(--bg-dark); 
+    color: #fff; 
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+/* ===================================================
+   🌊 1. 開場封面
+   =================================================== */
+.cover-wrapper-fullscreen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: var(--bg-dark);
+}
+
+.banner-bg-split {
+    position: absolute;
+    top: 0; width: 50%; height: 100%;
+    overflow: hidden; z-index: 1;
+}
+.text-left-mirror { left: 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+.text-right-mirror { right: 0; }
+
+.banner-bg-split .banner-img {
+    position: absolute; top: 0;
+    width: 200%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3) contrast(1.15);
+}
+.text-left-mirror .banner-img { left: 0; }
+.text-right-mirror .banner-img { right: 0; }
+
+.banner-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(3, 8, 14, 0.3) 0%, rgba(3, 8, 14, 0.85) 100%);
+    z-index: 2;
+}
+
+.cover-content-box {
+    z-index: 10;
+    position: relative;
+    max-width: 680px;
+    padding: 0 20px;
+}
+
+.prologue-line {
+    font-size: 15px;
+    color: #a2b7cb;
+    letter-spacing: 6px;
+    line-height: 2.2;
+    font-weight: 300;
+    opacity: 0;
+}
+
+.cover-center-title h1 {
+    font-size: 60px; 
+    font-weight: 900;
+    letter-spacing: 20px; 
+    color: #ffffff;
+    margin-top: 35px;
+    margin-left: 20px;
+    opacity: 0;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.cover-center-title p {
+    color: #7b92a8;
+    font-size: 11px;
+    letter-spacing: 8px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+.click-enter-btn {
+    margin-top: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 40px;
+    background: rgba(251, 192, 45, 0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 4px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+.click-enter-btn:hover { 
+    background: var(--accent); 
+    color: #000; 
+}
+
+/* ===================================================
+   🧭 2. 頂部導覽列
+   =================================================== */
+header, main, .bg-container {
+    opacity: 0;
+}
+
+.bg-container {
+    position: absolute; width: 100%; height: 100%;
+    z-index: -2; overflow: hidden;
+}
+
+.bg-slide {
+    position: absolute; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    opacity: 0; 
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    transform: scale(1.12);
+}
+.bg-slide.active { opacity: 1; transform: scale(1); }
+
+.bg-container::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(3,8,14,0.96) 0%, rgba(3,8,14,0.78) 45%, rgba(3,8,14,0.3) 100%);
+}
+
+header {
+    position: absolute; top: 0; width: 100%; padding: 25px 60px;
+    display: flex; justify-content: space-between; align-items: center; z-index: 100;
+    background: linear-gradient(to bottom, rgba(3, 8, 14, 0.85), transparent);
+}
+
+.logo { 
+    font-size: 16px; font-weight: 800; letter-spacing: 4px; 
+    border-left: 3px solid var(--accent); padding-left: 12px;
+}
+
+nav { display: flex; gap: 28px; align-items: center; }
+nav a {
+    color: #c0cdd8; text-decoration: none; font-size: 12px;
+    letter-spacing: 2px; transition: 0.3s;
+}
+nav a:hover, nav a.active { color: var(--accent); }
+
+.chapter-modal-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(251, 192, 45, 0.12);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.chapter-modal-trigger:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+/* ===================================================
+   📖 3. 主畫面展示區
+   =================================================== */
+main {
+    display: flex; align-items: center; height: 100vh; padding: 0 5% 0 6%; gap: 50px;
+    position: relative; z-index: 10;
+}
+
+.info-panel { 
+    flex: 0 0 420px; 
+}
+
+.tag-chapter {
+    display: inline-block;
+    color: var(--accent); 
+    font-size: 12px; 
+    font-weight: 700;
+    letter-spacing: 3px; 
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+}
+
+.info-panel h1 { 
+    font-size: 38px; 
+    font-weight: 900; 
+    line-height: 1.25; 
+    margin-bottom: 18px;
+    white-space: pre-line;
+    color: #ffffff;
+}
+
+.info-panel p { 
+    font-size: 13.5px; 
+    color: #ccd7e2;
+    line-height: 1.9; 
+    margin-bottom: 22px; 
+    text-align: justify;
+}
+
+.subchapters-preview {
+    margin-top: 5px;
+}
+.subchapters-preview-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #7b8e9f;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.subchapters-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.sub-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #b0c4de;
+    letter-spacing: 1px;
+}
+
+/* ===================================================
+   🃏 4. 加大立體卡片與 Hover「點擊進入」指示
+   =================================================== */
+.slider-wrapper { 
+    flex: 1; min-width: 0; display: flex; flex-direction: column; 
+}
+
+.swiper { 
+    width: 100%; 
+    padding: 30px 10px 20px 10px; 
+}
+
+.swiper-slide { 
+    width: var(--card-w); 
+    height: var(--card-h); 
+    cursor: pointer; 
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    opacity: 0.4;
+    transform: scale(0.92);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 超立體質感卡片 */
+.card {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 20px; 
+    overflow: hidden;
+    position: relative; 
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    background: #0d1622;
+}
+
+.swiper-slide-active .card {
+    border-color: rgba(251, 192, 45, 0.7);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-glow), 0 0 0 1px rgba(251, 192, 45, 0.4) inset;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 45px 80px rgba(0, 0, 0, 0.95), 0 0 35px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.card img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+    filter: brightness(0.85);
+}
+
+.card:hover img { 
+    transform: scale(1.08); 
+    filter: brightness(0.65);
+}
+
+/* ✨ Hover 浮現「點擊進入」全卡片提示層 */
+.card-hover-mask {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(3, 8, 14, 0.3);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.card-hover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 40px;
+    background: rgba(251, 192, 45, 0.95);
+    color: #03080e;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    box-shadow: 0 10px 25px rgba(251, 192, 45, 0.6);
+    transform: translateY(12px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.card:hover .card-hover-mask {
+    opacity: 1;
+}
+
+.card:hover .card-hover-badge {
+    transform: translateY(0) scale(1);
+}
+
+/* 卡片底部常駐文字 */
+.card-info {
+    position: absolute; bottom: 0; left: 0; width: 100%; 
+    padding: 24px 26px;
+    background: linear-gradient(to top, rgba(3, 8, 14, 0.98) 0%, rgba(3, 8, 14, 0.6) 65%, transparent 100%);
+    z-index: 2;
+}
+
+.card-info span { 
+    font-size: 12px; 
+    color: var(--accent); 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+}
+
+.card-info h3 { 
+    font-size: 24px; 
+    margin-top: 5px; 
+    font-weight: 700; 
+    letter-spacing: 1px; 
+}
+
+/* 翻頁按鈕：精準靠左對齊第一個卡片 */
+.bottom-controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.nav-row { 
+    display: flex; 
+    gap: 16px; 
+}
+
+.nav-btn {
+    width: 48px; height: 48px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; transition: 0.3s; color: #fff; font-size: 18px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.nav-btn:hover { 
+    background: var(--accent); 
+    border-color: var(--accent); 
+    color: #000; 
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ===================================================
+   🗂️ 5. 全結構樹狀目錄彈窗
+   =================================================== */
+.chapter-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(3, 8, 14, 0.96);
+    backdrop-filter: blur(16px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 6%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.chapter-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 35px; right: 50px;
+    background: none; border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff; width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer;
+    font-size: 20px; transition: 0.3s;
+}
+.modal-close-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+.modal-header h2 {
+    font-size: 30px;
+    letter-spacing: 8px;
+    color: #ffffff;
+}
+.modal-header p {
+    font-size: 12px;
+    color: #8da4b7;
+    letter-spacing: 3px;
+    margin-top: 6px;
+}
+
+.chapter-tree-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1240px;
+}
+
+.tree-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+.tree-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 15px var(--accent-glow);
+}
+
+.tree-card-header {
+    position: relative;
+    height: 120px;
+}
+.tree-card-header img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.7);
+}
+.tree-header-info {
+    position: absolute; bottom: 10px; left: 14px;
+}
+.tree-header-info span {
+    font-size: 10px; color: var(--accent); font-weight: 700; letter-spacing: 1px;
+}
+.tree-header-info h4 {
+    font-size: 15px; color: #fff;
+}
+
+.tree-sub-list {
+    padding: 14px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;
+}
+
+.tree-sub-item {
+    display: flex; align-items: center; gap: 8px; font-size: 12px;
+    color: #b0c4de; text-decoration: none; padding: 7px 10px;
+    border-radius: 6px; background: rgba(255, 255, 255, 0.03); transition: 0.2s ease;
+}
+.tree-sub-item span {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; color: var(--accent); font-weight: 700;
+}
+.tree-sub-item:hover {
+    background: rgba(251, 192, 45, 0.15); color: #fff; transform: translateX(4px);
+}
+
+.fade { transition: 0.35s ease; }
+.fade-out { opacity: 0; transform: translateY(10px); }
+.fade-in { opacity: 1; transform: translateY(0); }

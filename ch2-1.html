@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留下來的不只是機器：廖大慶與三鋼鐵工廠的故事｜漁生</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ocean-deep: #133b5c;          /* 核心主色：深海湛藍 */
+            --ocean-blue: #1d5687;          /* 亮藍主調 */
+            --ocean-soft: #4382b5;          /* 輔助淺藍 */
+            --text-main: #133b5c;
+            --text-muted: #537591;
+            --accent-gold: #f1b451;         /* 統一暖金黃強調色 */
+            --ocean-soft-bg: #eaf2f8;       /* 柔和淺海藍底色 */
+            --text-dark: #1e293b;           /* 正文閱讀深灰黑 */
+            --border-soft: #d0deeb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Serif TC", "Montserrat", serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--ocean-soft-bg);
+            color: var(--text-dark);
+            line-height: 2.15;
+            overflow-x: hidden;
+        }
+
+        /* ===================================================
+           🌊 1. 頂部導覽列
+           =================================================== */
+        .top-notice-bar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; 
+            height: 68px;
+            background-color: rgba(240, 248, 255, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(19, 59, 92, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 45px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(19, 59, 92, 0.08);
+        }
+
+        .notice-brand-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--ocean-deep);
+            letter-spacing: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .notice-brand-title:hover {
+            opacity: 0.8;
+        }
+
+        .top-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-item-link {
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .nav-item-link:hover, .nav-item-link.active {
+            background-color: rgba(19, 59, 92, 0.08);
+            border-color: rgba(19, 59, 92, 0.2);
+            color: var(--ocean-blue);
+        }
+
+        /* ===================================================
+           🎬 2. 文章滿版封面 (Hero Cover)
+           =================================================== */
+        .article-hero {
+            position: relative;
+            width: 100vw;
+            height: 85vh;
+            min-height: 540px;
+            display: flex;
+            align-items: flex-end;
+            background: linear-gradient(180deg, rgba(6, 17, 30, 0.3) 0%, rgba(6, 17, 30, 0.88) 100%),
+                        url('image/ch2-1-cover.JPG') center/cover no-repeat;
+            padding-bottom: 70px;
+        }
+
+        .article-hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+            color: #ffffff;
+        }
+
+        .article-main-title {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(2rem, 4.2vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: 0.04em;
+            margin-bottom: 24px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===================================================
+           📖 3. 專題正文排版（寬版 1100px）
+           =================================================== */
+        .article-body-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 32px 180px 32px;
+        }
+
+        /* 開頭引言段落 */
+        .article-lead-intro {
+            font-size: 1.18rem;
+            line-height: 2.25;
+            color: var(--ocean-deep);
+            margin-bottom: 50px;
+            letter-spacing: 0.025em;
+            text-align: justify;
+            border-left: 4px solid var(--ocean-deep);
+            padding-left: 24px;
+        }
+
+        .article-p {
+            font-size: 1.12rem;
+            color: #334155;
+            margin-bottom: 34px;
+            letter-spacing: 0.025em;
+            text-align: justify;
+        }
+
+        /* 段落小標題 */
+        .article-sub-heading {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.05rem);
+            font-weight: 800;
+            color: var(--ocean-deep);
+            margin: 65px 0 28px 0;
+            letter-spacing: 0.03em;
+            line-height: 1.35;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 18px;
+        }
+
+        /* 文章中引述的話 */
+        .article-pure-quote {
+            margin: 40px 0;
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+            font-weight: 700;
+            color: var(--ocean-deep);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            text-align: left;
+            opacity: 0.95;
+        }
+
+        /* 📷 圖片展示區（縮小寬度為 86% 並置中，最大高度縮減至 480px） */
+        .article-image-figure {
+            margin: 50px auto;
+            max-width: 86%;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(19, 59, 92, 0.06);
+        }
+
+        .article-image-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-image-caption {
+            padding: 14px 20px;
+            background: #ffffff;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+
+        .caption-photographer {
+            color: var(--ocean-deep);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* 🎥 嵌入影片方框（寬度與縮小後的圖片一致：86%） */
+        .featured-video-card {
+            margin: 55px auto 40px auto;
+            max-width: 86%;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(19, 59, 92, 0.08);
+        }
+
+        .video-embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            background-color: #000000;
+        }
+
+        .video-embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-card-caption {
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+
+        /* 返回專題列表按鈕 */
+        .back-to-stories-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 60px;
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid var(--ocean-deep);
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-stories-btn:hover {
+            background-color: var(--ocean-deep);
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        /* ===================================================
+           ⚓ 4. 滑到底部升起的 Footer (三欄平衡：TOP 置中)
+           =================================================== */
+        .site-footer {
+            position: fixed;
+            bottom: 0; 
+            left: 0;
+            width: 100vw;
+            height: 120px;
+            background: rgba(19, 59, 92, 0.96);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 60px;
+            z-index: 120;
+            transform: translateY(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-footer.show {
+            transform: translateY(0);
+        }
+
+        .footer-left {
+            justify-self: start;
+        }
+
+        .footer-left h4 {
+            font-size: 17px;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 12px;
+            opacity: 0.7;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        .footer-center {
+            justify-self: center;
+        }
+
+        .footer-back-top-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-back-top-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .footer-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-social-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-social-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 950px) {
+            .top-notice-bar {
+                padding: 0 20px;
+            }
+            .article-hero {
+                height: 70vh;
+                padding-bottom: 40px;
+            }
+            .article-body-wrapper {
+                padding: 50px 20px 140px 20px;
+            }
+            .article-image-figure, .featured-video-card {
+                max-width: 100%;
+            }
+            .site-footer {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                height: auto;
+                padding: 24px 20px;
+                text-align: center;
+            }
+            .footer-left, .footer-center, .footer-right {
+                justify-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌊 頂部導覽列 (點擊「漁生」Logo 平滑滾動至頂端) -->
+    <nav class="top-notice-bar">
+        <a href="#heroCover" class="notice-brand-title" id="navBrandLogo">漁生</a>
+        <div class="top-nav-links">
+            <a href="index.html" class="nav-item-link">Home</a>
+            <a href="storymap.html" class="nav-item-link">Story Map</a>
+            <a href="#about" class="nav-item-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- 🎬 文章滿版封面 -->
+    <header class="article-hero" id="heroCover">
+        <div class="article-hero-container">
+            <h1 class="article-main-title">留下來的不只是機器：<br>廖大慶與三鋼鐵工廠的故事</h1>
+            <div class="article-meta">
+                <span>文字／林佑恩</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📖 正文內容 -->
+    <main class="article-body-wrapper">
+        
+        <!-- 📷 照片 1：三鋼鐵工廠文物館外觀 -->
+        <figure class="article-image-figure" style="margin-top: 0;">
+            <img src="image/ch2-1-1.jpg" alt="三鋼鐵工廠文物館外觀">
+            <figcaption class="article-image-caption">
+                <span>三鋼鐵工廠文物館外觀</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <!-- 引言段落（左側帶有深海藍線條） -->
+        <div class="article-lead-intro">
+            對南方澳的記憶，往往與海牽動著。人們談起這裡普遍會聯想到漁船、漁港與滿載而歸的漁獲，然而在海面上美麗的風景背後，還有另一群岸上的工作者，他們默默的支持著整個海上工作的運行，日復一日的修理、打造與改良機械，讓漁船能持續航行、作業並安全回港。而在這些看不見的勞動背後，「三鋼鐵工廠」曾經扮演極其關鍵的角色。
+        </div>
+
+        <p class="article-p">
+            「我是廖大慶，在南方澳土生土長，已經在這邊住了七十多年了。」三鋼鐵工廠的經營者廖大慶笑著說，語氣裡散發著對這片土地的熟悉與自在。
+        </p>
+
+        <p class="article-p">
+            對廖大慶而言，這間由父親與兩位好友於1962年創立的鐵工廠，不只是一間工廠，而是一段與家庭、地方、時代交織的生命經驗。在但2004年因產業沒落而結束營運後，三鋼鐵工廠並沒有消失，而是被他保留下來，轉化為一個文物館。對他而言，這裡不只是沒落的工作場所，更是一個承載記憶與情感的空間，是一段無法割捨的生命故事。
+        </p>
+
+        <!-- 段落一 -->
+        <h2 class="article-sub-heading">在鐵聲中長大：工廠裡的童年記憶</h2>
+        
+        <p class="article-p">
+            廖大慶並非在三鋼長大，但他的童年卻與這個環境緊密相連。由於工廠就在家裡附近，他從小便時常進出，對這裡感到既親切又有些疏離。對他而言，這裡不只是父親工作的場域，更像一個充滿未知的地方，各種機器、金屬聲響與工人忙碌的身影交織在一起，塑造了他對工廠最初的想像，他回憶道：「小時候覺得這裡很好玩，什麼都有。」
+        </p>
+
+        <p class="article-p">
+            國中的時候，父親不想讓他在暑假浪費時間，便將他帶進工廠。一開始的工作內容與技術無關，多半是打掃環境、清理廁所與整理工具等雜事，但也正是在這樣的過程中，他開始學會觀察師傅如何操作機具、如何判斷問題、如何處理材料，這些並不是逐步教導的知識，而是日常生活中日積月累的理解與經驗。
+        </p>
+
+        <p class="article-p">
+            但這樣的學習並沒有持續太久，父親在他高中時意外過世，家中經濟頓時失去依靠，當時還在讀高中的廖大慶不敢說要去讀大學，只想趕快畢業能幫家裡一點忙，心中也留下無法繼續升學的遺憾。從那時開始，工廠對他不只是生活的一部分，更是一種承擔與責任。
+        </p>
+
+        <!-- 段落二 -->
+        <h2 class="article-sub-heading">三個金剛的創業年代：工廠裡的人情與技藝</h2>
+
+        <!-- 📷 照片 2：三個金剛合影 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-1-2.jpg" alt="三個金剛合影">
+            <figcaption class="article-image-caption">
+                <span>三個金剛，由左至右依序是林添金師傅、廖心通師傅、馮輝通師傅。</span>
+                <span class="caption-photographer">（照片提供／廖大慶）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            三鋼鐵工廠的誕生，是一整個時代背景的縮影。
+        </p>
+
+        <p class="article-p">
+            戰後的台灣景氣低迷，南方澳也因漁業資源豐富吸引了大量人口湧入，更帶動了周邊產業發展。廖大慶的父親來自南投，年輕時曾在一家鐵工廠當過學徒，來到南方澳後，他先以師傅的身分工作。但隨著他在這裡落地生根、娶妻生子，他開始意識到單靠薪資難以支撐家庭，於是與兩位志同道合的朋友共同創業。
+        </p>
+
+        <p class="article-p">
+            廖大慶回憶三鋼草創的情況：「三個人各有專長，我父親是車床，另外兩個師傅一個做手工技藝，一個做機械加工，他們覺得三個人像三個金剛。」這個稱號不僅僅是象徵，也代表一種技術的整合。在那個物資匱乏的年代，工廠需要具備高度的靈活性，才能滿足不同需求，而三鋼鐵工廠正是在這樣的環境中建立起來的。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「既是老闆跟員工，也像是家人一樣。」
+        </div>
+
+        <p class="article-p">
+            他提到，當時的工廠是以學徒制度作為主要的技術傳承方式，年輕人進入工廠不需繳學費，而是透過長時間的勞動和觀察來習得技藝，一般來說三年四個月是一個被普遍認可的出師門檻，這樣的制度不僅源於產業的需求，也反映了當時的社會結構及價值觀。
+        </p>
+
+        <!-- 段落三 -->
+        <h2 class="article-sub-heading">港口邊的萬能工廠：撐起南方澳漁業的無名力量</h2>
+
+        <!-- 📷 照片 3：舊型的燒頭式二汽缸引擎 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-1-3.JPG" alt="舊型的燒頭式二汽缸引擎">
+            <figcaption class="article-image-caption">
+                <span>舊型的燒頭式二汽缸引擎</span>
+                <span class="caption-photographer">（照片提供／廖大慶）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            在南方澳漁業最興盛的年代，三鋼鐵工廠與港口的運作息息相關。廖大慶說，民國五、六十年代的漁港路，是一整排與漁船相關的工廠，從板金、焊接到引擎維修各種技術，在這裡交織形成完整的產業鏈，那是一種現在難以重現的景象。
+        </p>
+
+        <p class="article-p">
+            三鋼鐵工廠規模雖然不大，卻能充分滿足許多船隻的需求。廖大慶強調：「我們那種工廠，叫做萬能工廠。」在那個年代沒有現成零件可以購買，從小螺絲到引擎，所有需要的東西都必須自己製作，「一根鐵條拿回來，要自己車成螺絲，公的母的都要做。」他說，甚至還要處理不同規格的問題，美制與英制並不相通，一切都依賴專業的技術與經驗判斷。
+        </p>
+
+        <p class="article-p">
+            漁民在海上作業時遇到的新需求也會被帶回岸邊，交給師傅來處理，「你只要講得出來，我們就做給你」廖大慶這麼說。從捕魚工具的改良，到機械結構的設計，工廠成為連結漁業與技術的重要樞紐。他強調，「以前的師傅，船還沒靠岸，遠遠聽聲音就知道哪裡壞掉。」這種能力來自於長時間與器械相處形成的直覺，在維修上展現出的不只是技術，更是一種身體記憶與經驗累積。
+        </p>
+
+        <p class="article-p">
+            有一個傳說故事：一艘漁船多次維修無果，最後透過問神指引來到三鋼鐵工廠，最終被師傅修復，從此，三鋼鐵工廠更加聲名大噪。這個故事不僅反映了地方記憶，也是那個年代技術與文化的一部分。
+        </p>
+
+        <!-- 段落四 -->
+        <h2 class="article-sub-heading">被時代淘汰的技術：當工廠不再被需要</h2>
+
+        <p class="article-p">
+            但再怎麼重要的技術也無法抵擋時代的變遷，1970年代起全球工業進入「輕薄短小」的轉型時期，機械設備逐漸標準化，柴油引擎取代傳統燒頭式引擎，這樣的變化使得傳統鐵工廠逐漸失去競爭力。
+        </p>
+
+        <p class="article-p">
+            三鋼鐵工廠當時面臨是否轉型的重大抉擇，「如果要活下去，就要改做新的引擎。」廖大慶說。但工廠最終沒有選擇轉型，而是決定繼續為舊客戶提供服務，畢竟那些仍使用舊型引擎的漁船仍需要有人維修，而三鋼鐵工廠選擇撐到最後，正因為廖大慶認為「我們不能放棄那些客戶。」
+        </p>
+
+        <p class="article-p">
+            這個決定使工廠在經歷產業全面轉型後，自然的走向結束。廖大慶感慨地說，「消失的，不只是工廠本身，還包括整個技術體系與生活方式。」手工製作、師徒制度和港邊的勞動，都在機械化與自動化的浪潮中逐漸消退，「現在一台機器可以做幾萬個，以前要手把手教的東西，現在都不需要了。」他感嘆道。
+        </p>
+
+        <!-- 段落五 -->
+        <h2 class="article-sub-heading">從工廠到文物館：留下的不只是機器，而是記憶</h2>
+
+        <!-- 📷 照片 4：館內陳列各式老舊機械 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-1-4.JPG" alt="三鋼鐵工廠文物館館內陳列各式老舊機械">
+            <figcaption class="article-image-caption">
+                <span>三鋼鐵工廠文物館館內陳列各式老舊機械</span>
+                <span class="caption-photographer">（照片提供／廖大慶）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            三鋼鐵工廠停止營運後，廖大慶面臨一個選擇：讓它消失，或讓它留下，他最終選擇了後者。因為「不捨得」，也因為這個地方對他而言，不只是父親的事業，更是一段承載著感情與恩情的空間。父親過世後，另外兩位股東照顧他們一家，讓母親進工廠工作，得以支撐家庭生活，這份情誼使他無法輕易放棄這裡。
+        </p>
+
+        <p class="article-p">
+            於是他和妻子將工廠保留下來，整理設備，慢慢轉型為文物館。剛開始人們不太能理解這樣的選擇，但隨著時間過去，類似的工廠逐漸消失，三鋼鐵工廠成為少數仍保留完整樣貌的歷史場所。
+        </p>
+
+        <p class="article-p">
+            走進工廠內部，牆面上仍掛著過去使用的齒輪、模具與鐵件，代表性的燒頭式內燃機、老舊的車床與船用零件被完整保留下來，小小的空間裡堆滿了木製工藝品及魚鉤、鋼索等漁船零件，昏暗的燈光與斑駁的牆面，依稀保留著過去工廠運作時的氣味與痕跡。牆上的黑白照片記錄著早期的工人師傅們及他們的故事，另一側則展示著南方澳漁港不同年代的老照片，從繁華的港口到工廠的變遷，這些歲月的痕跡都被留存在這個空間裡。
+        </p>
+
+        <p class="article-p">
+            如今這裡不只是一個展示器械的工廠，更是一個記錄南方澳歷史的重要據點。除了保存老機具與工業技術，也留下了南方澳漁業興盛、港口發展與地方生活的軌跡，近年來許多學生、研究者和遊客透過參訪重新認識南方澳，也看見港口背後那些不為人知的勞動者與技術者，使三鋼鐵工廠不只是一個靜態的展示空間，更成為一個持續承載地方記憶與人情交流的場所。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「你有歷史沒有場景不行，有場景沒有歷史也不行。」
+        </div>
+
+        <p class="article-p">
+            他語重心長的說，他想留下的不只是機器，而是整個時代曾經存在過的生活樣貌——人、技術與港口共同交織而成的故事。
+        </p>
+
+        <!-- 段落六 -->
+        <h2 class="article-sub-heading">一個地方如何被記得</h2>
+
+        <!-- 📷 照片 5：創辦人廖大慶 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-1-5.JPG" alt="三鋼鐵工廠文物館創辦人廖大慶">
+            <figcaption class="article-image-caption">
+                <span>三鋼鐵工廠文物館創辦人廖大慶</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            當廖大慶被問到三鋼鐵工廠對他的意義時，他並沒有給出宏大的答案，卻說了令人為之動容的回覆：「這是我父親一輩子的心血，也是對我有養育恩情的地方」。對他而言，三鋼鐵工廠從來不只是一間老工廠，而是一個承載著南方澳記憶的地方，那些老師傅工作的身影、工廠裡日夜運轉的機械聲、港口最繁華的景象，以及人與人之間的重情重義，都曾真實存在於這裡。
+        </p>
+
+        <p class="article-p">
+            從萬能工廠到逐漸沒落，再到如今被保存為文物館，三鋼鐵工廠的轉變映照出南方澳的變化，曾經熱鬧的街道與繁榮的產業現在已不復見，但那些被留下來的空間與故事，讓人們得以回顧這座港口曾經的模樣。
+        </p>
+
+        <p class="article-p">
+            廖大慶始終認為，如果這些場景與故事消失了，後來的人便很難真正理解，這座港口曾經被一群岸上的技術者與勞動者默默支撐著。
+        </p>
+
+        <p class="article-p" style="font-weight: 700; color: var(--ocean-deep); margin-top: 24px; font-size: 1.25rem;">
+            而三鋼鐵工廠的保留，也讓這些曾經存在過的生活，不會完全被遺忘。
+        </p>
+
+        <!-- 🎥 嵌入影片專屬方框（寬度與圖片同步等比縮小） -->
+        <div class="featured-video-card">
+            <div class="video-embed-wrapper">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?rel=0" 
+                    title="三鋼鐵工廠專題影音紀錄" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-card-caption">
+                <span>廖大慶訪談影音</span>
+                <span class="caption-photographer">（影音製作／漁生團隊）</span>
+            </div>
+        </div>
+
+        <!-- 返回專題目錄 -->
+        <a href="javascript:history.back()" class="back-to-stories-btn">
+            <span>← 返回專題列表</span>
+        </a>
+
+    </main>
+
+    <!-- ⚓ 滑到底部升起的 Footer (三欄平衡：TOP 置中) -->
+    <footer class="site-footer" id="siteFooter">
+        <div class="footer-left">
+            <h4>漁生 · 南方澳的故事</h4>
+            <p>© 2026 NANFANG'AO PROJECT. ALL RIGHTS RESERVED.</p>
+        </div>
+
+        <div class="footer-center">
+            <button class="footer-back-top-btn" id="backToTopBtn">
+                <span>TOP</span>
+                <span>↑</span>
+            </button>
+        </div>
+        
+        <div class="footer-right">
+            <div class="footer-social-links">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+
+                <a href="mailto:contact@nanfangao.tw" class="footer-social-btn" title="聯絡信箱">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 3.771v-9.14l4.623 5.369zm3.456 2.071l-1.929 2.257h-6.15l6.079-4.965 2 2.708zm4.042 0l2-2.708 6.079 4.965h-6.15l-1.929-2.257zm3.456-2.071l4.423-5.369v9.14l-4.423-3.771zm-15.577-5.929h20v2.443l-10 7.557-10-7.557v-2.443z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript：Footer 滾動升起與回頂端監聽 -->
+    <script>
+        const siteFooter = document.getElementById('siteFooter');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const navBrandLogo = document.getElementById('navBrandLogo');
+
+        // 點擊「漁生」Logo 平滑滾動至頂端
+        navBrandLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.innerHeight + window.pageYOffset;
+            const threshold = document.documentElement.scrollHeight - 80;
+
+            if (scrollPosition >= threshold) {
+                siteFooter.classList.add('show');
+            } else {
+                siteFooter.classList.remove('show');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

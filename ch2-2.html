@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>船靠岸之後：游師傅與全福造船廠的四十年｜漁生</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ocean-deep: #133b5c;          /* 核心主色：深海湛藍 */
+            --ocean-blue: #1d5687;          /* 亮藍主調 */
+            --ocean-soft: #4382b5;          /* 輔助淺藍 */
+            --text-main: #133b5c;
+            --text-muted: #537591;
+            --accent-gold: #f5b349;         /* 統一暖金黃強調色 */
+            --ocean-soft-bg: #eaf2f8;       /* 柔和淺海藍底色 */
+            --text-dark: #1e293b;           /* 正文閱讀深灰黑 */
+            --border-soft: #d0deeb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Serif TC", "Montserrat", serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--ocean-soft-bg);
+            color: var(--text-dark);
+            line-height: 2.15;
+            overflow-x: hidden;
+        }
+
+        /* ===================================================
+           🌊 1. 頂部導覽列 (完全對齊新版規格，無漢堡鈕)
+           =================================================== */
+        .top-notice-bar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; 
+            height: 68px;
+            background-color: rgba(240, 248, 255, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(19, 59, 92, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 45px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(19, 59, 92, 0.08);
+        }
+
+        .notice-brand-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--ocean-deep);
+            letter-spacing: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .notice-brand-title:hover {
+            opacity: 0.8;
+        }
+
+        .top-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-item-link {
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .nav-item-link:hover, .nav-item-link.active {
+            background-color: rgba(19, 59, 92, 0.08);
+            border-color: rgba(19, 59, 92, 0.2);
+            color: var(--ocean-blue);
+        }
+
+        /* ===================================================
+           🎬 2. 文章滿版封面 (Hero Cover)
+           =================================================== */
+        .article-hero {
+            position: relative;
+            width: 100vw;
+            height: 85vh;
+            min-height: 540px;
+            display: flex;
+            align-items: flex-end;
+            background: linear-gradient(180deg, rgba(6, 17, 30, 0.3) 0%, rgba(6, 17, 30, 0.88) 100%),
+                        url('image/ch2-6_ch2-2-cover.JPG') center/cover no-repeat;
+            padding-bottom: 70px;
+        }
+
+        .article-hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+            color: #ffffff;
+        }
+
+        .article-main-title {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(2rem, 4.2vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: 0.04em;
+            margin-bottom: 24px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===================================================
+           📖 3. 專題正文排版（寬版 1100px）
+           =================================================== */
+        .article-body-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 32px 180px 32px;
+        }
+
+        .article-p {
+            font-size: 1.12rem;
+            color: #334155;
+            margin-bottom: 34px;
+            letter-spacing: 0.025em;
+            text-align: justify;
+        }
+
+        /* 段落小標題（左側帶有統一暖金黃色線條） */
+        .article-sub-heading {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.05rem);
+            font-weight: 800;
+            color: var(--ocean-deep);
+            margin: 65px 0 28px 0;
+            letter-spacing: 0.03em;
+            line-height: 1.35;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 18px;
+        }
+
+        /* 文章中引述的話（純文字無邊框，微縮字體） */
+        .article-pure-quote {
+            margin: 40px 0;
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+            font-weight: 700;
+            color: var(--ocean-deep);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            text-align: left;
+            opacity: 0.95;
+        }
+
+        /* 📷 圖片展示區（微縮版面 86% 並置中，細緻雅致） */
+        .article-image-figure {
+            margin: 50px auto;
+            max-width: 86%;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(19, 59, 92, 0.06);
+        }
+
+        .article-image-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-image-caption {
+            padding: 14px 20px;
+            background: #ffffff;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+
+        .caption-photographer {
+            color: var(--ocean-deep);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* 返回專題列表按鈕 */
+        .back-to-stories-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 60px;
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid var(--ocean-deep);
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-stories-btn:hover {
+            background-color: var(--ocean-deep);
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        /* ===================================================
+           ⚓ 4. 滑到底部升起的 Footer (三欄平衡：TOP 置中)
+           =================================================== */
+        .site-footer {
+            position: fixed;
+            bottom: 0; 
+            left: 0;
+            width: 100vw;
+            height: 120px;
+            background: rgba(19, 59, 92, 0.96);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 60px;
+            z-index: 120;
+            transform: translateY(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-footer.show {
+            transform: translateY(0);
+        }
+
+        .footer-left {
+            justify-self: start;
+        }
+
+        .footer-left h4 {
+            font-size: 17px;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 12px;
+            opacity: 0.7;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        .footer-center {
+            justify-self: center;
+        }
+
+        .footer-back-top-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-back-top-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .footer-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-social-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-social-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 950px) {
+            .top-notice-bar {
+                padding: 0 20px;
+            }
+            .article-hero {
+                height: 70vh;
+                padding-bottom: 40px;
+            }
+            .article-body-wrapper {
+                padding: 50px 20px 140px 20px;
+            }
+            .article-image-figure {
+                max-width: 100%;
+            }
+            .site-footer {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                height: auto;
+                padding: 24px 20px;
+                text-align: center;
+            }
+            .footer-left, .footer-center, .footer-right {
+                justify-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌊 頂部導覽列 (點擊「漁生」Logo 平滑滾動至最頂端) -->
+    <nav class="top-notice-bar">
+        <a href="#heroCover" class="notice-brand-title" id="navBrandLogo">漁生</a>
+        <div class="top-nav-links">
+            <a href="index.html" class="nav-item-link">Home</a>
+            <a href="storymap.html" class="nav-item-link">Story Map</a>
+            <a href="#about" class="nav-item-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- 🎬 文章滿版封面 -->
+    <header class="article-hero" id="heroCover">
+        <div class="article-hero-container">
+            <h1 class="article-main-title">船靠岸之後：<br>游師傅與全福造船廠的四十年</h1>
+            <div class="article-meta">
+                <span>文字／林佑恩</span>
+                <span>⏱️ 閱讀時間約 7 分鐘</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📖 正文內容 -->
+    <main class="article-body-wrapper">
+        
+        <!-- 📷 照片 1：全福造船廠廠內照 -->
+        <figure class="article-image-figure" style="margin-top: 0;">
+            <img src="image/ch2-2-1.jpg" alt="全福造船廠廠內照">
+            <figcaption class="article-image-caption">
+                <span>全福造船廠廠內照</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <!-- 段落一 -->
+        <h2 class="article-sub-heading">南方澳漁港裡的造船廠：全福與港口的日常</h2>
+
+        <p class="article-p">
+            龍德造船廠與全福造船廠，是蘇澳港目前具代表性的兩家造船廠，相比於龍德造船廠的大型特殊船舶和軍艦建造，全福造船廠更貼近南方澳漁港的日常。這裡沒有高速巡防艇或大型工業設備，取而代之的是漁船、海釣船及娛樂船長年進出港口的身影。對南方澳來說，全福不僅僅是一個造船廠，更是港口長年存在的維修基地，許多船隻從全福落成後，就一直在這裡進行維修和保養，而船長、船東與師傅之間也因多年的合作建立起深厚關係。
+        </p>
+
+        <p class="article-p">
+            走進全福造船廠，映入眼簾的是停放在岸邊的船體、等待整修的船殼，以及空氣中瀰漫的淡淡樹脂氣味。與現代化大型船廠相比，這裡的工作節奏更貼近當地漁港的生活，船隻什麼時候進港、什麼時候需要維修、哪艘船最近需要重新整理，幾乎都和港口的日常息息相關。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「現在如果要整個上架維修，就剩下全福了。」
+        </div>
+
+        <p class="article-p">
+            在全福造船廠工作近四十年的游峯政師傅說。從年輕時投入造船工作至今，他長年負責船舶建造與維修，也見證了南方澳漁港造船產業的興衰與變化。
+        </p>
+
+        <p class="article-p">
+            如今的南方澳，真正還能進行大型上架船維修的地方已經不多了，全福幾乎成為漁港裡最後的重要維修場所。很多漁船在靠岸後，都需要對船底進行重新整理、修補船體和整理結構，這些工作都依賴全福完成。對漁民而言，全福不只是修船廠，更像是港口背後不可或缺的一部分。
+        </p>
+
+        <p class="article-p">
+            近年來隨著漁業模式的改變，全福造船的重心也逐漸從傳統漁船轉向海釣船和漁樂船。游師傅坦言：「現在比較多是海釣船、漁樂船，漁船反而少很多了。」過去以捕魚為主的漁船數量逐漸減少，取而代之的是專門為載客海釣和休閒娛樂而設的船隻，反映出整個港口產業的轉型。
+        </p>
+
+        <p class="article-p">
+            過去南方澳靠漁業養活許多人，但隨著漁業資源減少、政策限制增加，以及年輕人口外流，港口的工作型態也在逐漸改變。儘管如此，全福造船依然留在港邊，陪著那些還在出海的人，共同維持港口的運作。
+        </p>
+
+        <!-- 段落二 -->
+        <h2 class="article-sub-heading">從木船到FRP：全福造船廠的工作現場</h2>
+
+        <!-- 📷 照片 2：全福造船廠廠內工作照 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-2-2.jpg" alt="全福造船廠廠內工作照">
+            <figcaption class="article-image-caption">
+                <span>全福造船廠廠內工作照</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            游師傅進入造船業時，木造船的時代其實已經逐漸結束，FRP纖維船則開始成為主流。早期的木船需要定期修補縫隙和進行防水處理，加上木材成本提高，因此逐漸被FRP材料取代。FRP其實就是玻璃纖維強化塑膠，通常會直接稱作「塑膠船」。
+        </p>
+
+        <p class="article-p">
+            建造一艘FRP船舶的流程相當繁瑣，首先要完成設計圖，接著進行造模、拋光、上蠟、噴漆、基層施工，再到最後組裝，每個步驟都需要大量人力與豐富的經驗。
+        </p>
+
+        <p class="article-p">
+            船舶並不能一次性大量生產，即使是相同尺寸的船，不同船東也可能會有不同需求，有些人喜歡簡單的線條，有些則會要求彩繪、特殊配置或獨特的隔艙設計，因此每一艘船其實都帶有一定程度的客製化。
+        </p>
+
+        <p class="article-p">
+            游師傅提到，在FRP施工中最辛苦的一部份是化學材料帶來的刺激性，樹脂與硬化劑混合後會產生強烈的氣味，對於某些體質比較敏感的人，會出現頭暈的情況，甚至造成皮膚過敏。尤其在密閉空間施工時，空氣不流通，氣味會更加刺鼻，玻璃纖維本身也容易引起皮膚發癢，因此施工人員必須做好防護措施，也必須習慣長時間待在這樣的工作環境裡，很多老師傅幾乎長年都穿長袖施工，即使在悶熱的夏天也不例外。
+        </p>
+
+        <p class="article-p">
+            雖然現在已經有輔助施工的設備了，但仍然有很多細節必須仰賴人工處理，因為船體本身充滿彎曲的角度和客製化需求，很難實現完全自動化，因此對全福而言，造船依舊是需要手工經驗的行業。
+        </p>
+
+        <!-- 段落三 -->
+        <h2 class="article-sub-heading">從學徒開始：游師傅進入造船業的四十年</h2>
+
+        <!-- 📷 照片 3：游峯政師傅 -->
+        <figure class="article-image-figure">
+            <img src="image/ch2-2-3.jpg" alt="游峯政師傅">
+            <figcaption class="article-image-caption">
+                <span>游峯政師傅</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <p class="article-p">
+            1988年時，游師傅透過鄰居的介紹進入造船廠工作，從學徒開始做起。那時的他對未來並沒有特別的規劃，只是單純想找一份工作，卻沒想到這一做，就是四十年。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「以前就是看師傅怎麼做，慢慢學。」
+        </div>
+
+        <p class="article-p">
+            剛進入造船廠時，他最先接觸的是研磨工作，從材料的打磨和拋光開始，然後逐步學習FRP施工與造模技術。游師傅坦言很多技術並沒有固定教材，而是透過觀察老師傅的實際操作，一點一滴吸收學習。
+        </p>
+
+        <p class="article-p">
+            游師傅住在冬山，這四十年來，他幾乎每天都往返南方澳工作，從山邊到海邊，他體驗了兩種截然不同的生活環境，這也逐漸成為他生活中的一部分。儘管不是南方澳土生土長的，但多年來在港口工作的經歷，也讓他對這裡產生了深厚的情感。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「做習慣了，就沒有什麼感覺了。」
+        </div>
+
+        <p class="article-p">
+            即使不是在南方澳出生長大，他卻把人生大半時間都留給了這裡，見證了港口的變化，也看著自己從學徒一路成為老師傅。這句話聽起來平淡，卻流露出許多老一輩職人的共同特質，他們鮮少談論夢想，也不太會特別強調自己的辛苦和付出，而是在長時間的工作中，慢慢把技術融入日常生活的一部份。
+        </p>
+
+        <!-- 段落四 -->
+        <h2 class="article-sub-heading">修船的人與港口的人情：南方澳的合作關係</h2>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「很多船從新船開始，到現在都還在幫他們維修。」
+        </div>
+
+        <p class="article-p">
+            在南方澳，許多船長、船東與師傅之間早已認識數十年。游師傅說，對他們來說，這是一種在長年的合作關係下，建立起的信任與情感。
+        </p>
+
+        <p class="article-p">
+            港口裡的人際關係和城市裡的工作環境很不一樣，船長和師傅了解彼此的長處、工作習慣及需求，久而久之大家便形成一種默契，有時候漁民出海回來，也會順手帶些漁獲和師傅們分享，就像朋友之間的互動一樣自然。這些長期累積的人情，也讓全福與南方澳漁港緊密相連。很多船長在遇到問題時，最先想到的就是回到熟悉的船廠找信任的師傅解決。
+        </p>
+
+        <p class="article-p">
+            對游師傅而言，最有成就感的事情莫過於看著一艘船從新船一路使用到現在，甚至修了三、四十年仍然在海上運行良好。對於外界來說這些船隻或許只是港口裡的普通漁船，但對於長年從事維護的師傅來說，它們卻承載著無數的時光與回憶。
+        </p>
+
+        <!-- 段落五 -->
+        <h2 class="article-sub-heading">從繁榮到蕭條：南方澳漁港的變遷</h2>
+
+        <p class="article-p">
+            游師傅在南方澳工作超過四十年，也親眼見證了港口從繁榮到逐漸衰退的過程。
+        </p>
+
+        <p class="article-p">
+            他回憶起南方澳最興盛、最熱鬧的時期，港口停泊著上千艘漁船，人口密度非常高，名列全臺前茅，當時戲院與娛樂場所林立，港口總是洋溢著人們的喧鬧聲與燈火。
+        </p>
+
+        <p class="article-p">
+            曾經許多外地人來到南方澳工作，包含澎湖、小琉球等地的漁民，這使得港口聚集了大量人口。然而隨著漁業資源的減少、政策的限制增加以及年輕人口的外流，漁船數量逐漸下降，讓港口慢慢從繁榮走向蕭條。
+        </p>
+
+        <p class="article-p">
+            近年來根據《漁船建造許可及漁業證照核發準則》，政府透過汰建制度管制漁船總量，需要先汰除舊船後才能申請建造新船，因此新船數量逐漸減少，再加上年輕人投入漁業和造船產業的意願大幅降低，港口的工作型態也隨之改變。
+        </p>
+
+        <p class="article-p">
+            這些變化不僅僅是產業上的挑戰，更像是在目睹一個熟悉的環境慢慢轉變。曾經熱鬧的戲院和娛樂場所逐漸減少，人潮也不再如往昔般擁擠，而那些依然堅守在港口的人們，仍然在自己的崗位上努力著。
+        </p>
+
+        <!-- 段落六 -->
+        <h2 class="article-sub-heading">把人生留給港口的人：游師傅的堅守與傳承</h2>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「現在年輕人待不住。如果有人願意學，我還是願意教。」
+        </div>
+
+        <p class="article-p">
+            在這個變遷下，全福造船廠也面臨技術傳承的挑戰。游師傅坦言很多年輕人因為造船廠的工作環境、氣味以及高強度的勞動而選擇離開。如今造船廠的年輕學徒越來越少，許多崗位只能依靠外籍勞工來填補。儘管如此他仍希望這項技術能繼續傳承下去。造船對他來說不只是工作，更是一種陪伴自己四十年的生活方式。
+        </p>
+
+        <p class="article-p">
+            而南方澳與造船廠，也早已成為他人生的一部分。
+        </p>
+
+        <p class="article-p">
+            從1988年到現在，游師傅幾乎將整個人生都奉獻給了港口。在那些歲月中，修理過的船隻、結識的夥伴與港邊的風景，也逐漸成為他記憶中熟悉的日常。
+        </p>
+
+        <p class="article-p" style="font-weight: 700; color: var(--ocean-deep); margin-top: 24px; font-size: 1.25rem;">
+            正是像游師傅這樣日復一日堅守的職人，默默支撐著南方澳漁港的運行。
+        </p>
+
+        <!-- 返回專題目錄 -->
+        <a href="worker.html" class="back-to-stories-btn">
+            <span>← 返回專題列表</span>
+        </a>
+
+    </main>
+
+    <!-- ⚓ 滑到底部升起的 Footer (三欄平衡：TOP 置中) -->
+    <footer class="site-footer" id="siteFooter">
+        <div class="footer-left">
+            <h4>漁生 · 南方澳的故事</h4>
+            <p>© 2026 NANFANG'AO PROJECT. ALL RIGHTS RESERVED.</p>
+        </div>
+
+        <div class="footer-center">
+            <button class="footer-back-top-btn" id="backToTopBtn">
+                <span>TOP</span>
+                <span>↑</span>
+            </button>
+        </div>
+        
+        <div class="footer-right">
+            <div class="footer-social-links">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+
+                <a href="mailto:contact@nanfangao.tw" class="footer-social-btn" title="聯絡信箱">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 3.771v-9.14l4.623 5.369zm3.456 2.071l-1.929 2.257h-6.15l6.079-4.965 2 2.708zm4.042 0l2-2.708 6.079 4.965h-6.15l-1.929-2.257zm3.456-2.071l4.423-5.369v9.14l-4.423-3.771zm-15.577-5.929h20v2.443l-10 7.557-10-7.557v-2.443z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript：Footer 滾動升起與回頂端監聽 -->
+    <script>
+        const siteFooter = document.getElementById('siteFooter');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const navBrandLogo = document.getElementById('navBrandLogo');
+
+        // 點擊「漁生」Logo 平滑滾動至頂端
+        navBrandLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.innerHeight + window.pageYOffset;
+            const threshold = document.documentElement.scrollHeight - 80;
+
+            if (scrollPosition >= threshold) {
+                siteFooter.classList.add('show');
+            } else {
+                siteFooter.classList.remove('show');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

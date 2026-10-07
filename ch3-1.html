@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南方澳的新討海運動：雷震洲與他的海派生活｜漁生</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ocean-deep: #133b5c;          /* 核心主色：深海湛藍 */
+            --ocean-blue: #1d5687;          /* 亮藍主調 */
+            --ocean-soft: #4382b5;          /* 輔助淺藍 */
+            --text-main: #133b5c;
+            --text-muted: #537591;
+            --accent-gold: #f5b349;         /* 統一暖金黃強調色 */
+            --ocean-soft-bg: #eaf2f8;       /* 柔和淺海藍底色 */
+            --text-dark: #1e293b;           /* 正文閱讀深灰黑 */
+            --border-soft: #d0deeb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Serif TC", "Montserrat", serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--ocean-soft-bg);
+            color: var(--text-dark);
+            line-height: 2.15;
+            overflow-x: hidden;
+        }
+
+        /* ===================================================
+           🌊 1. 頂部導覽列 (對齊全站規格，無漢堡鈕)
+           =================================================== */
+        .top-notice-bar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; 
+            height: 68px;
+            background-color: rgba(240, 248, 255, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(19, 59, 92, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 45px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(19, 59, 92, 0.08);
+        }
+
+        .notice-brand-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--ocean-deep);
+            letter-spacing: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .notice-brand-title:hover {
+            opacity: 0.8;
+        }
+
+        .top-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-item-link {
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .nav-item-link:hover, .nav-item-link.active {
+            background-color: rgba(19, 59, 92, 0.08);
+            border-color: rgba(19, 59, 92, 0.2);
+            color: var(--ocean-blue);
+        }
+
+        /* ===================================================
+           🎬 2. 文章滿版封面 (Hero Cover)
+           =================================================== */
+        .article-hero {
+            position: relative;
+            width: 100vw;
+            height: 85vh;
+            min-height: 540px;
+            display: flex;
+            align-items: flex-end;
+            background: linear-gradient(180deg, rgba(6, 17, 30, 0.3) 0%, rgba(6, 17, 30, 0.88) 100%),
+                        url('image/ch3-1-3.JPG') center/cover no-repeat;
+            padding-bottom: 70px;
+        }
+
+        .article-hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+            color: #ffffff;
+        }
+
+        .article-main-title {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(2rem, 4.2vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .article-sub-banner {
+            font-size: clamp(1rem, 1.8vw, 1.35rem);
+            font-weight: 400;
+            color: #d1e2f5;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===================================================
+           📖 3. 專題正文排版（寬版 1100px）
+           =================================================== */
+        .article-body-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 32px 180px 32px;
+        }
+
+        /* 開頭引言段落（左側帶有深海藍線條） */
+        .article-lead-intro {
+            font-size: 1.18rem;
+            line-height: 2.25;
+            color: var(--ocean-deep);
+            margin-bottom: 50px;
+            letter-spacing: 0.025em;
+            text-align: justify;
+            border-left: 4px solid var(--ocean-deep);
+            padding-left: 24px;
+        }
+
+        .article-p {
+            font-size: 1.12rem;
+            color: #334155;
+            margin-bottom: 34px;
+            letter-spacing: 0.025em;
+            text-align: justify;
+        }
+
+        /* 段落小標題（左側帶有統一暖金黃色線條） */
+        .article-sub-heading {
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.05rem);
+            font-weight: 800;
+            color: var(--ocean-deep);
+            margin: 65px 0 28px 0;
+            letter-spacing: 0.03em;
+            line-height: 1.35;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 18px;
+        }
+
+        /* 文章中引述的話（純文字無邊框，微縮字體） */
+        .article-pure-quote {
+            margin: 40px 0;
+            font-family: 'Shippori Mincho', "Noto Serif TC", serif;
+            font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+            font-weight: 700;
+            color: var(--ocean-deep);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            text-align: left;
+            opacity: 0.95;
+        }
+
+        /* 📷 圖片展示區（微縮版面 86% 並置中，細緻雅致） */
+        .article-image-figure {
+            margin: 50px auto;
+            max-width: 86%;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(19, 59, 92, 0.06);
+        }
+
+        .article-image-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-image-caption {
+            padding: 14px 20px;
+            background: #ffffff;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+
+        .caption-photographer {
+            color: var(--ocean-deep);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* 🎥 嵌入影片專屬方框（放置於文章最後，寬度與圖片一致 86%） */
+        .featured-video-card {
+            margin: 60px auto 40px auto;
+            max-width: 86%;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(19, 59, 92, 0.08);
+        }
+
+        .video-embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            background-color: #000000;
+        }
+
+        .video-embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-card-caption {
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+
+        /* 返回專題列表按鈕 */
+        .back-to-stories-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 60px;
+            text-decoration: none;
+            color: var(--ocean-deep);
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid var(--ocean-deep);
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-stories-btn:hover {
+            background-color: var(--ocean-deep);
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        /* ===================================================
+           ⚓ 4. 滑到底部升起的 Footer (三欄平衡：TOP 置中)
+           =================================================== */
+        .site-footer {
+            position: fixed;
+            bottom: 0; 
+            left: 0;
+            width: 100vw;
+            height: 120px;
+            background: rgba(19, 59, 92, 0.96);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 60px;
+            z-index: 120;
+            transform: translateY(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-footer.show {
+            transform: translateY(0);
+        }
+
+        .footer-left {
+            justify-self: start;
+        }
+
+        .footer-left h4 {
+            font-size: 17px;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+        .footer-left p {
+            font-size: 12px;
+            opacity: 0.7;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        .footer-center {
+            justify-self: center;
+        }
+
+        .footer-back-top-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-back-top-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .footer-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-social-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-social-btn:hover {
+            background: #ffffff;
+            color: var(--ocean-deep);
+            border-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 950px) {
+            .top-notice-bar {
+                padding: 0 20px;
+            }
+            .article-hero {
+                height: 70vh;
+                padding-bottom: 40px;
+            }
+            .article-body-wrapper {
+                padding: 50px 20px 140px 20px;
+            }
+            .article-image-figure, .featured-video-card {
+                max-width: 100%;
+            }
+            .site-footer {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                height: auto;
+                padding: 24px 20px;
+                text-align: center;
+            }
+            .footer-left, .footer-center, .footer-right {
+                justify-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌊 頂部導覽列 (點擊「漁生」Logo 平滑滾動至最頂端) -->
+    <nav class="top-notice-bar">
+        <a href="#heroCover" class="notice-brand-title" id="navBrandLogo">漁生</a>
+        <div class="top-nav-links">
+            <a href="index.html" class="nav-item-link">Home</a>
+            <a href="storymap.html" class="nav-item-link">Story Map</a>
+            <a href="#about" class="nav-item-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- 🎬 文章滿版封面 -->
+    <header class="article-hero" id="heroCover">
+        <div class="article-hero-container">
+            <h1 class="article-main-title">南方澳的新討海運動：<br>雷震洲與他的海派生活</h1>
+            <p class="article-sub-banner">從無菜單料理到「旬魚鱻旅行」，以食魚教育重塑百年漁港的永續藍圖</p>
+            <div class="article-meta">
+                <span>文字／李翊綸</span>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- 📖 正文內容 -->
+    <main class="article-body-wrapper">
+        
+        <!-- 📷 照片 1：主理人雷震洲 -->
+        <figure class="article-image-figure" style="margin-top: 0;">
+            <img src="image/ch3-1-1.jpg" alt="「海派生活」主理人雷震洲">
+            <figcaption class="article-image-caption">
+                <span>「海派生活」主理人雷震洲，在南方澳經營結合海鮮料理與水域活動的海洋體驗空間</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <!-- 引述佳句 -->
+        <div class="article-pure-quote">
+            「大海不能預約，只能期待。」
+        </div>
+
+        <!-- 前言導讀 -->
+        <p class="article-p">
+            這是餐廳「海派生活」的主理人雷震洲（江湖人稱「小雷」）常掛在嘴邊的一句話。
+        </p>
+
+        <p class="article-p">
+            在清晨帶領遊客划向大海迎接第一道曙光，上午回到旅行社處理繁忙業務，下午趕赴魚市場挑選當日新鮮漁獲，傍晚則回到海邊的餐廳親自下廚、並陪伴客人小酌敘情。這是雷震洲一天的縮影，也是他口中雖然勞累卻「樂在其中」的海派生活。在南方澳這個百年漁港，他正試圖用一道道沒有固定菜單的料理，以及一場場親水活動，推動著一場屬於在地的「新討海運動」。
+        </p>
+
+        <!-- 段落一 -->
+        <h2 class="article-sub-heading">與故鄉的海重新相遇</h2>
+
+        <p class="article-p">
+            在旅遊業打拚了數十年，雷震洲的足跡遍布台北、綠島、台東、花蓮等地。二十多年前，他回到故鄉蘇澳，開始幫父親賣冰。而大約在 2000 年，宜蘭突然掀起一陣賞鯨熱潮，雷震洲與宜蘭縣政府及在地觀光產業結盟，一口氣開發出數百條宜蘭在地遊程，並於 2004 年正式創立了「尚海旅行社」。
+        </p>
+
+        <p class="article-p">
+            在推廣賞鯨與在地旅遊的過程中，或許是早年待在綠島推廣海域活動所埋下的伏筆，雷震洲逐漸被蘇澳眼前的這片海洋深深吸引。他笑著回顧這段奇妙的連結：「我叫雷震洲，『震洲』這兩個字都帶著水。可能就是因為命中缺水，才讓我這輩子注定要與蘇澳的這片海結下這麼深的緣分。」
+        </p>
+
+        <p class="article-p">
+            然而，真正讓雷震洲與蘇澳的海產生深刻連結，是大約十年前接觸到立槳（SUP）運動。「蘇澳的海是小而美的，像是內埤、賊仔澳、豆腐岬等地方的地形變化都非常豐富。」雷震洲談起故鄉的海，語氣中帶著自豪。他特別提到，蘇澳豆腐岬擁有世界上第一筆珊瑚產卵的紀錄，短短 50 公尺內就有多達一百五十種珊瑚礁。這片五彩繽紛的海域，也讓雷震洲在五年前成立「海派生活」——一間沒有固定菜單的海鮮餐廳，希望打造一個讓遊客能玩水、吃魚、近距離感受海洋脈動的基地。
+        </p>
+
+        <!-- 📷 照片 2：海派生活的餐桌 -->
+        <figure class="article-image-figure">
+            <img src="image/ch3-1-2.jpg" alt="海派生活餐桌與生活方式">
+            <figcaption class="article-image-caption">
+                <span>雷震洲打造的「海派生活」，從一方餐桌出發，串起料理、食魚教育與親近海洋的生活方式。</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <!-- 段落二 -->
+        <h2 class="article-sub-heading">餐桌上的海派生活</h2>
+
+        <p class="article-p">
+            從旅行社跨足餐飲業，雷震洲在廚藝方面完全是「半路出家」，因此從挑魚、殺魚到烹飪的技術，全都是從零開始，靠自己摸索自學。談起這段從無到有的過程，他以相當勤奮的方式學習：「就每天吃，慢慢去接觸，然後去網路或書籍中研究。」
+        </p>
+
+        <p class="article-p">
+            雷震洲坦言，將一條魚處理成生魚片看似簡單，YouTube 上也有無數的教學影片，但真正站上砧板時，靠的全是實作累積出的「手感」。從選用刀具的長短、解魚與切生魚片需替換不同種類的刀具，到下刀時的力道與角度，每一個細微的動作都需要長期的經驗去揣摩與體會。憑藉著對海洋的熱忱與單純覺得「有趣」的初衷，他一步步吸取影片裡的料理技術，最終淬鍊成端上餐桌的一道道自信料理。
+        </p>
+
+        <!-- 📷 照片 3：料理新鮮漁獲 -->
+        <figure class="article-image-figure">
+            <img src="image/Ch3-1-cover.JPG" alt="雷震洲料理當日新鮮漁獲">
+            <figcaption class="article-image-caption">
+                <span>雷震洲親自料理當日新鮮漁獲，將南方澳的海味端上餐桌。</span>
+                <span class="caption-photographer">（攝影／漁生團隊）</span>
+            </figcaption>
+        </figure>
+
+        <!-- 段落三 -->
+        <h2 class="article-sub-heading">從吃魚開始的「新討海運動」</h2>
+
+        <p class="article-p">
+            「海派生活」於 2021 年正式開幕，卻在短短半個月後慘遭新冠疫情打擊。然而，低谷中往往蘊藏著轉機。在餐廳無法營業的期間，雷震洲結識了喜愛拍魚的林文集。兩人在無數次拍魚和料理的過程中，逐漸發覺南方澳的海鮮不應只是餐桌上的消耗品，更應該延伸出廣闊的「食魚教育」，將吃魚昇華為一種藝術。
+        </p>
+
+        <p class="article-p">
+            與林文集創辦的「四魚故事館」合作，不僅帶領遊客認識南方澳豐富的在地魚種，更細膩講述了第一線捕魚人的生命故事。除此之外，他們進一步推出「旬魚鱻旅行」的深度遊程，建構了完整的參與式體驗：從認識討海人、辨識各類漁船與專業漁法（如延繩釣、大型圍網、一支釣等），接著親自走入魚市場學習如何挑選當季的新鮮漁獲，最後再回到「海派廚房」親手體驗殺魚與烹調。這段從海洋到餐桌的歷程，讓遊客的每一次品嚐，都能對海洋資源有更深刻的理解。
+        </p>
+
+        <p class="article-p">
+            回顧南方澳的漁業發展，猶如一部「壓縮現代化」的歷史縮影。在 2000 年後，漁業的捕撈技術快速升級，例如全台最多的大型三角虎圍網就聚集於此。所謂的「三角虎」（即扒網），是一種極度高效的捕魚方式。漁民通常會在夜間出動燈船，利用強大的集魚燈光將海面上的鯖魚等洄游魚群大面積吸引聚集，接著由主船迅速撒下巨型圍網將其包抄，甚至搭配高功率的吸魚機，將網內的魚群連同海水一網打盡。然而，這種一次捕撈數萬噸的高效漁法，卻也讓南方澳快速面臨海洋資源枯竭的危機。與此同時，勞動市場的結構也產生了劇變。高工時、高風險的傳統捕撈業，面臨著嚴重的世代斷層。
+        </p>
+
+        <!-- 文章中引述的話 -->
+        <div class="article-pure-quote">
+            「老一輩不希望年輕人做這麼辛苦的工作，年輕的也不想要做，很多老船長的職涯結束後就沒有人傳承。」
+        </div>
+
+        <p class="article-p">
+            雷震洲語重心長地說到。如今，第一線的捕撈勞動力已大量仰賴外籍漁工，有時整艘船上只有船長是台灣人。面對這樣的困境，雷震洲推動的「新討海運動」成為一種解方。他向政府申請地方創生計畫，提倡「友善釣魚」與水上活動，將一次性的大量捕撈，轉型為海洋運動嘉年華，讓漁村的經濟來源從單一的「消耗海洋」轉向「體驗海洋」。
+        </p>
+
+        <!-- 📷 照片 4：友善釣魚宣導 -->
+    <!-- 📷 第四張照片（直式照片完整顯示，兩側留白） -->
+<figure class="article-image-figure">
+    <img src="image/ch3-1-4.jpg" 
+         alt="雷震洲傳遞海洋資源永續觀念" 
+         style="object-fit: contain; background: #ffffff;">
+    <figcaption class="article-image-caption">
+        <span>雷震洲帶領民眾認識南方澳魚種，並透過友善釣魚與實際出海體驗，傳遞海洋資源永續的觀念。</span>
+        <span class="caption-photographer">（圖片提供／海派生活）</span>
+    </figcaption>
+</figure>
+        <!-- 段落四 -->
+        <h2 class="article-sub-heading">駛向更遠的海洋藍圖</h2>
+
+        <p class="article-p">
+            除了漁業轉型，雷震洲還有一個更大的藍圖：打通蘇澳與日本石垣島的航線。蘇澳與石垣島締結姐妹市已達三十年，但民間的水路卻遲遲無法打通，最大的阻礙來自於僵化的法規與制度。
+        </p>
+
+        <p class="article-p">
+            雷震洲指出，蘇澳港目前受限於商港法（根據現行法規，蘇澳港定位為商港與軍港，資源配置優先供應大型貨運與軍務；由於缺乏專屬「遊艇碼頭」規劃，且進出港受嚴格的程序通關、檢疫、安檢、緝私管制，私人遊艇與帆船難以獲得常態性許可），僅開放客輪與貨輪進出，並沒有設置遊艇碼頭，一般的遊艇與帆船若要進出，會被海關擋下。「不是不能進來，而是海關不讓你進來。」雷震洲表示，若未來商港法能有所調整，增設遊艇碼頭，從蘇澳直航日本的海洋生活圈將不再只是夢想。
+        </p>
+
+        <p class="article-p">
+            雷震洲坦言，「我們做餐廳其實沒有賺到錢，反而是水域的這個區塊才有賺到錢」。儘管如此，他堅持保留這間無菜單海鮮餐廳，因為這不僅是他自己想過的生活，更是傳遞海洋保育觀念的基地。
+        </p>
+
+        <p class="article-p" style="font-weight: 700; color: var(--ocean-deep); margin-top: 24px; font-size: 1.25rem;">
+            在這個充滿挑戰的時代，雷震洲要用他黝黑的皮膚和爽朗的笑聲證明：面對環境與時代的巨變，只要找回與蘇澳港共生的節奏，依然能走出一條寬廣且屬於自己的「海派」之路。
+        </p>
+
+        <!-- 🎥 嵌入影片專屬方框（移至文末） -->
+        <div class="featured-video-card">
+            <div class="video-embed-wrapper">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?rel=0" 
+                    title="海派生活專題影音紀錄" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-card-caption">
+                <span>雷震洲訪談影音</span>
+                <span class="caption-photographer">（影音製作／漁生團隊）</span>
+            </div>
+        </div>
+
+        <!-- 返回專題目錄 -->
+        <a href="food.html" class="back-to-stories-btn">
+            <span>← 返回專題列表</span>
+        </a>
+
+    </main>
+
+    <!-- ⚓ 滑到底部升起的 Footer (三欄平衡：TOP 置中) -->
+    <footer class="site-footer" id="siteFooter">
+        <div class="footer-left">
+            <h4>漁生 · 南方澳的故事</h4>
+            <p>© 2026 NANFANG'AO PROJECT. ALL RIGHTS RESERVED.</p>
+        </div>
+
+        <div class="footer-center">
+            <button class="footer-back-top-btn" id="backToTopBtn">
+                <span>TOP</span>
+                <span>↑</span>
+            </button>
+        </div>
+        
+        <div class="footer-right">
+            <div class="footer-social-links">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+
+                <a href="mailto:contact@nanfangao.tw" class="footer-social-btn" title="聯絡信箱">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 3.771v-9.14l4.623 5.369zm3.456 2.071l-1.929 2.257h-6.15l6.079-4.965 2 2.708zm4.042 0l2-2.708 6.079 4.965h-6.15l-1.929-2.257zm3.456-2.071l4.423-5.369v9.14l-4.423-3.771zm-15.577-5.929h20v2.443l-10 7.557-10-7.557v-2.443z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript：Footer 滾動升起與回頂端監聽 -->
+    <script>
+        const siteFooter = document.getElementById('siteFooter');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const navBrandLogo = document.getElementById('navBrandLogo');
+
+        // 點擊「漁生」Logo 平滑滾動至頂端
+        navBrandLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.innerHeight + window.pageYOffset;
+            const threshold = document.documentElement.scrollHeight - 80;
+
+            if (scrollPosition >= threshold) {
+                siteFooter.classList.add('show');
+            } else {
+                siteFooter.classList.remove('show');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
